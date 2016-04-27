@@ -12,9 +12,9 @@ class AuthServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->app['auth']->extend('cachedEloquent',function()
+        $this->app['auth']->provider('cachedEloquent',function()
         {
-            $model = $this->app['config']['auth.model'];
+            $model = $this->app['config']['auth.providers.users.model'];
             return new CachedEloquentUserProvider($this->app['hash'], $model);
         });
     }
