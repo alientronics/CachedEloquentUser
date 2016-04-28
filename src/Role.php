@@ -14,7 +14,7 @@ class Role extends KodeineRole {
      */
     public function getPermissions()
     {
-        return \Cache::remember('permissionById_'.Auth::user()['id'], 60,
+        return \Cache::remember('permissionById_'.Auth::user()['id'], config('acl.cacheSeconds'),
             function () {
                 return $this->getPermissionsInherited();
             }

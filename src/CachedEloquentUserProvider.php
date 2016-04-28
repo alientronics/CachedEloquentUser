@@ -21,7 +21,7 @@ class CachedEloquentUserProvider implements UserProvider {
     public function retrieveById($identifier)
     {
         $model = $this->createModel();
-        return \Cache::remember('userById_' . $identifier, 60,
+        return \Cache::remember('userById_' . $identifier, config('acl.cacheSeconds'),
             function () use ($model, $identifier) {
                 return $model->newQuery()->find($identifier);
             }
@@ -32,7 +32,7 @@ class CachedEloquentUserProvider implements UserProvider {
     public function retrieveByToken($identifier, $token)
     {
         $model = $this->createModel();
-        return \Cache::remember('userByIdAndToken_' . $identifier . $token, 60,
+        return \Cache::remember('userByIdAndToken_' . $identifier . $token, config('acl.cacheSeconds'),
             function () use ($model, $identifier, $token) {
                 return $model->newQuery()
                     ->where($model->getKeyName(), $identifier)
