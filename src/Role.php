@@ -1,6 +1,6 @@
 <?php 
 
-namespace Alientronics\CachedEloquentUser;
+namespace Alientronics\CachedEloquent;
 
 use Kodeine\Acl\Models\Eloquent\Role as KodeineRole;
 use Illuminate\Support\Facades\Auth;
